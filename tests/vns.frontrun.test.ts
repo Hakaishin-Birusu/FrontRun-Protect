@@ -42,10 +42,10 @@ describe("VNS Front run Test", async () => {
       /**
        * Assuming,
        * 1. Owner's transaction is not mined, and still resides in mem-pool.
-       * 2. Milicious miner is able to get hold of transaction data i.e, reservation hash.
-       * 3. Milious miner sends transaction with same payload with higher gas.
-       * 4. Milious miner sucessfully reserves the reservationHash and pays reservation fee.
-       * 5. Since milicious miner has already reserved the reservationHash , user transaction will later fail.
+       * 2. Malicious miner is able to get hold of transaction data i.e, reservation hash.
+       * 3. Malicious miner sends transaction with same payload with higher gas.
+       * 4. Malicious miner successfully reserves the reservationHash and pays reservation fee.
+       * 5. Since malicious miner has already reserved the reservationHash , user transaction will later fail.
        */
 
       // reservationHash is reserved by miner tx
@@ -57,13 +57,13 @@ describe("VNS Front run Test", async () => {
        * Assuming,
        * 1. Owner is not aware of front-run in reservation & sends transaction to registerName, revealing original name in string.
        * 2. Owners's tx to registerName is not mined & residing in mem-pool.
-       * 3. Again, milicious miner is able to get hold of transaction data i.e, Name string.
-       * 4. Milious miner sends transaction with revlead name & own address with higher gas.
-       * 5. NOTE : Since reservationHash in registerName is re-genrated & for this orginal name & msg.sender(address) is used
-       * So, miner will never be able to generate same reservationHash ever. Due to which front-run tx below fails for malicous miner.
+       * 3. Again, malicious miner is able to get hold of transaction data i.e, Name string.
+       * 4. Malicious miner sends transaction with revealed name & own address with higher gas.
+       * 5. NOTE : Since reservationHash in registerName is re-generated & for this original name & msg.sender(address) is used
+       * So, miner will never be able to generate same reservationHash ever. Due to which front-run tx below fails for malicious miner.
        */
 
-      // registerName tx by malicous miner fails
+      // registerName tx by malicious miner fails
       await expect(
         contract!
           .connect(maliciousMiner!)
@@ -71,12 +71,12 @@ describe("VNS Front run Test", async () => {
       ).to.be.revertedWith("ERR: NOT RESERVED OR EXPIRED");
 
       /**
-       * 1. Owner transaction is mined, and original owner can register name for itslef.
+       * 1. Owner transaction is mined, and original owner can register name for itself.
        * 2. Since reservation fee was paid by malicious miner, that fee is adjusted in registration fee,
        * thus owner benefits from front-run attack by miner.
        */
 
-      // owner successfuly register name.
+      // owner successfully register name.
       await contract!
         .connect(owner!)
         .registerName(vnsName, { value: tokens });

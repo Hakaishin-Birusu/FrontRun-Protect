@@ -23,7 +23,7 @@ honest user and registering its name in its own account.
 ```
 1. Install dependencies : npm i 
 2. Compile smart contract : npm run compile
-3. Run hardhat node (in seperate terminal): npm run node
+3. Run hardhat node (in separate terminal): npm run node
 4. Deploy contract (local) : npm run deploy
 5. Run Basic test : npm run testBasic
 6. Run Front-Run test : npm run testFR
