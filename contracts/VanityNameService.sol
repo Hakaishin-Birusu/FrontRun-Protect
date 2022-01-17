@@ -53,7 +53,7 @@ contract VanityNameService is IVNS, Ownable {
         require(msg.value >= reservationFee, "ERR : INSUFFICIENT FEE");
 
         if (nReservation.feePaid != 0) {
-            _cancleReservation(_reservationHash);
+            _cancelReservation(_reservationHash);
         }
 
         nReservation.reservedBy = msg.sender;
@@ -182,7 +182,7 @@ contract VanityNameService is IVNS, Ownable {
      *
      * NOTE Can only be called by reserver.
      */
-    function cancleReservation(bytes32 _reservationHash)
+    function cancelReservation(bytes32 _reservationHash)
         external
         payable
         override
@@ -198,7 +198,7 @@ contract VanityNameService is IVNS, Ownable {
             "ERR: NOT RESERVED"
         );
 
-        _cancleReservation(_reservationHash);
+        _cancelReservation(_reservationHash);
     }
 
     /**
@@ -241,13 +241,13 @@ contract VanityNameService is IVNS, Ownable {
         require(sent, "ERR : AMOUNT SEND FAILED");
     }
 
-    function _cancleReservation(bytes32 _reservationHash) internal {
+    function _cancelReservation(bytes32 _reservationHash) internal {
         safeTransfer(
             getNameReservation[_reservationHash].reservedBy,
             getNameReservation[_reservationHash].feePaid
         );
 
-        emit LogCancleReservation(
+        emit LogCancelReservation(
             msg.sender,
             _reservationHash,
             getNameReservation[_reservationHash].feePaid
@@ -320,6 +320,13 @@ contract VanityNameService is IVNS, Ownable {
     {
         return (block.timestamp >
             getNameRegistry[vnsUtils._getNameHash(_name)].registrationExpiry);
+    }
+
+    /**
+     * @dev Returns registry fee on the basis of string length.
+     */
+    function getPayableFee(string memory _name) external view override returns (uint256) {
+        return vnsUtils._getPrice(perCharRegistrationFee, _name);
     }
 }
 

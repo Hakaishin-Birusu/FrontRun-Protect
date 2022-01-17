@@ -38,7 +38,7 @@ interface IVanityNameService {
         uint256 expiryDate
     );
 
-    event LogCancleReservation(
+    event LogCancelReservation(
         address indexed cancledBy,
         bytes32 indexed cancledNameHash,
         uint256 reservationFeeReturned
@@ -67,7 +67,7 @@ interface IVanityNameService {
 
     function withdrawRegistryDeposit(string calldata _name) external payable;
 
-    function cancleReservation(bytes32 _reservationHash) external payable;
+    function cancelReservation(bytes32 _reservationHash) external payable;
 
     function vnsBalance() external view returns (uint256);
 
@@ -87,4 +87,6 @@ interface IVanityNameService {
         external;
 
     function getNameHash(string memory _name) external pure returns (bytes32);
+
+    function getPayableFee(string memory _name) external view returns (uint256);
 }

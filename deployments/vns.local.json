@@ -1,7 +1,7 @@
 {
     "VNS": {
         "Network": "local",
-        "ContractAddress": "0xbe18A1B61ceaF59aEB6A9bC81AB4FB87D56Ba167",
+        "ContractAddress": "0x1bEfE2d8417e22Da2E0432560ef9B2aB68Ab75Ad",
         "DeployedBy": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
         "reservationCost": "10000000000000000",
         "PerCharRegistryCost": "20000000000000000"

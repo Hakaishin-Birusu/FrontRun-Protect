@@ -9,21 +9,22 @@ subgraph "clusterVanityNameService" {
   "VanityNameService.registerName" [ label = "registerName", color = "brown", fillcolor = "#ffbdb9" ];
   "VanityNameService.renewName" [ label = "renewName", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
   "VanityNameService.withdrawRegistryDeposit" [ label = "withdrawRegistryDeposit", color = "brown", fillcolor = "#ffbdb9" ];
-  "VanityNameService.cancleReservation" [ label = "cancleReservation", color = "brown", fillcolor = "#ffbdb9" ];
+  "VanityNameService.cancelReservation" [ label = "cancelReservation", color = "brown", fillcolor = "#ffbdb9" ];
   "VanityNameService.updateFee" [ label = "updateFee", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
   "VanityNameService.updateDuration" [ label = "updateDuration", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
   "VanityNameService.safeTransfer" [ label = "safeTransfer" ];
-  "VanityNameService._cancleReservation" [ label = "_cancleReservation" ];
+  "VanityNameService._cancelReservation" [ label = "_cancelReservation" ];
   "VanityNameService._withdrawRegistryDeposit" [ label = "_withdrawRegistryDeposit" ];
   "VanityNameService.buildReservationHash" [ label = "buildReservationHash", color = "#FF9797", fillcolor = "#FF9797" ];
   "VanityNameService.getNameHash" [ label = "getNameHash", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
   "VanityNameService.vnsBalance" [ label = "vnsBalance", color = "#FF9797", fillcolor = "#FF9797" ];
   "VanityNameService.checkNameAvailability" [ label = "checkNameAvailability" ];
+  "VanityNameService.getPayableFee" [ label = "getPayableFee", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
   "VanityNameService.LogNameReservation" [ label = "LogNameReservation" ];
   "VanityNameService.LogNameRegistered" [ label = "LogNameRegistered" ];
   "VanityNameService.LogNameRenew" [ label = "LogNameRenew" ];
   "VanityNameService.payable" [ label = "payable" ];
-  "VanityNameService.LogCancleReservation" [ label = "LogCancleReservation" ];
+  "VanityNameService.LogCancelReservation" [ label = "LogCancelReservation" ];
   "VanityNameService.LogUserWithdraw" [ label = "LogUserWithdraw" ];
 }
 
@@ -35,7 +36,7 @@ subgraph "clustervnsUtils" {
 }
 
   "VanityNameService.reserveName";
-  "VanityNameService._cancleReservation";
+  "VanityNameService._cancelReservation";
   "VanityNameService.safeTransfer";
   "VanityNameService.LogNameReservation";
   "VanityNameService.registerName";
@@ -48,13 +49,14 @@ subgraph "clustervnsUtils" {
   "VanityNameService.renewName";
   "VanityNameService.LogNameRenew";
   "VanityNameService.withdrawRegistryDeposit";
-  "VanityNameService.cancleReservation";
+  "VanityNameService.cancelReservation";
   "VanityNameService.payable";
-  "VanityNameService.LogCancleReservation";
+  "VanityNameService.LogCancelReservation";
   "VanityNameService.LogUserWithdraw";
   "VanityNameService.buildReservationHash";
   "VanityNameService.getNameHash";
-  "VanityNameService.reserveName" -> "VanityNameService._cancleReservation" [ color = "#1bc6a6" ];
+  "VanityNameService.getPayableFee";
+  "VanityNameService.reserveName" -> "VanityNameService._cancelReservation" [ color = "#1bc6a6" ];
   "VanityNameService.reserveName" -> "VanityNameService.safeTransfer" [ color = "#1bc6a6" ];
   "VanityNameService.reserveName" -> "VanityNameService.LogNameReservation" [ color = "#1bc6a6" ];
   "VanityNameService.registerName" -> "vnsUtils._getReservationHash" [ color = "white" ];
@@ -68,15 +70,16 @@ subgraph "clustervnsUtils" {
   "VanityNameService.renewName" -> "VanityNameService.LogNameRenew" [ color = "#1bc6a6" ];
   "VanityNameService.withdrawRegistryDeposit" -> "vnsUtils._getNameHash" [ color = "white" ];
   "VanityNameService.withdrawRegistryDeposit" -> "VanityNameService._withdrawRegistryDeposit" [ color = "#1bc6a6" ];
-  "VanityNameService.cancleReservation" -> "VanityNameService._cancleReservation" [ color = "#1bc6a6" ];
+  "VanityNameService.cancelReservation" -> "VanityNameService._cancelReservation" [ color = "#1bc6a6" ];
   "VanityNameService.safeTransfer" -> "VanityNameService.payable" [ color = "#1bc6a6" ];
-  "VanityNameService._cancleReservation" -> "VanityNameService.safeTransfer" [ color = "#1bc6a6" ];
-  "VanityNameService._cancleReservation" -> "VanityNameService.LogCancleReservation" [ color = "#1bc6a6" ];
+  "VanityNameService._cancelReservation" -> "VanityNameService.safeTransfer" [ color = "#1bc6a6" ];
+  "VanityNameService._cancelReservation" -> "VanityNameService.LogCancelReservation" [ color = "#1bc6a6" ];
   "VanityNameService._withdrawRegistryDeposit" -> "VanityNameService.safeTransfer" [ color = "#1bc6a6" ];
   "VanityNameService._withdrawRegistryDeposit" -> "VanityNameService.LogUserWithdraw" [ color = "#1bc6a6" ];
   "VanityNameService.buildReservationHash" -> "vnsUtils._getReservationHash" [ color = "white" ];
   "VanityNameService.getNameHash" -> "vnsUtils._getNameHash" [ color = "white" ];
   "VanityNameService.checkNameAvailability" -> "vnsUtils._getNameHash" [ color = "white" ];
+  "VanityNameService.getPayableFee" -> "vnsUtils._getPrice" [ color = "white" ];
 
 
 rankdir=LR

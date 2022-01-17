@@ -1,3 +1,4 @@
+```
 ├─ type: SourceUnit
 └─ children
    ├─ 0
@@ -454,7 +455,7 @@
       │  │  │     │  │           ├─ type: FunctionCall
       │  │  │     │  │           ├─ expression
       │  │  │     │  │           │  ├─ type: Identifier
-      │  │  │     │  │           │  └─ name: _cancleReservation
+      │  │  │     │  │           │  └─ name: _cancelReservation
       │  │  │     │  │           ├─ arguments
       │  │  │     │  │           │  └─ 0
       │  │  │     │  │           │     ├─ type: Identifier
@@ -1525,7 +1526,7 @@
       │  │  └─ stateMutability: payable
       │  ├─ 11
       │  │  ├─ type: FunctionDefinition
-      │  │  ├─ name: cancleReservation
+      │  │  ├─ name: cancelReservation
       │  │  ├─ parameters
       │  │  │  └─ 0
       │  │  │     ├─ type: VariableDeclaration
@@ -1644,7 +1645,7 @@
       │  │  │           ├─ type: FunctionCall
       │  │  │           ├─ expression
       │  │  │           │  ├─ type: Identifier
-      │  │  │           │  └─ name: _cancleReservation
+      │  │  │           │  └─ name: _cancelReservation
       │  │  │           ├─ arguments
       │  │  │           │  └─ 0
       │  │  │           │     ├─ type: Identifier
@@ -2010,7 +2011,7 @@
       │  │  └─ stateMutability
       │  ├─ 15
       │  │  ├─ type: FunctionDefinition
-      │  │  ├─ name: _cancleReservation
+      │  │  ├─ name: _cancelReservation
       │  │  ├─ parameters
       │  │  │  └─ 0
       │  │  │     ├─ type: VariableDeclaration
@@ -2068,7 +2069,7 @@
       │  │  │     │     ├─ type: FunctionCall
       │  │  │     │     ├─ expression
       │  │  │     │     │  ├─ type: Identifier
-      │  │  │     │     │  └─ name: LogCancleReservation
+      │  │  │     │     │  └─ name: LogCancelReservation
       │  │  │     │     ├─ arguments
       │  │  │     │     │  ├─ 0
       │  │  │     │     │  │  ├─ type: MemberAccess
@@ -2445,9 +2446,88 @@
       │  │  ├─ isFallback: false
       │  │  ├─ isVirtual: false
       │  │  └─ stateMutability: view
-      │  └─ 20
+      │  ├─ 20
+      │  │  ├─ type: FunctionDefinition
+      │  │  ├─ name: checkNameAvailability
+      │  │  ├─ parameters
+      │  │  │  └─ 0
+      │  │  │     ├─ type: VariableDeclaration
+      │  │  │     ├─ typeName
+      │  │  │     │  ├─ type: ElementaryTypeName
+      │  │  │     │  ├─ name: string
+      │  │  │     │  └─ stateMutability
+      │  │  │     ├─ name: _name
+      │  │  │     ├─ identifier
+      │  │  │     │  ├─ type: Identifier
+      │  │  │     │  └─ name: _name
+      │  │  │     ├─ storageLocation: memory
+      │  │  │     ├─ isStateVar: false
+      │  │  │     ├─ isIndexed: false
+      │  │  │     └─ expression
+      │  │  ├─ returnParameters
+      │  │  │  └─ 0
+      │  │  │     ├─ type: VariableDeclaration
+      │  │  │     ├─ typeName
+      │  │  │     │  ├─ type: ElementaryTypeName
+      │  │  │     │  ├─ name: bool
+      │  │  │     │  └─ stateMutability
+      │  │  │     ├─ name
+      │  │  │     ├─ identifier
+      │  │  │     ├─ storageLocation
+      │  │  │     ├─ isStateVar: false
+      │  │  │     ├─ isIndexed: false
+      │  │  │     └─ expression
+      │  │  ├─ body
+      │  │  │  ├─ type: Block
+      │  │  │  └─ statements
+      │  │  │     └─ 0
+      │  │  │        ├─ type: ReturnStatement
+      │  │  │        └─ expression
+      │  │  │           ├─ type: TupleExpression
+      │  │  │           ├─ components
+      │  │  │           │  └─ 0
+      │  │  │           │     ├─ type: BinaryOperation
+      │  │  │           │     ├─ operator: >
+      │  │  │           │     ├─ left
+      │  │  │           │     │  ├─ type: MemberAccess
+      │  │  │           │     │  ├─ expression
+      │  │  │           │     │  │  ├─ type: Identifier
+      │  │  │           │     │  │  └─ name: block
+      │  │  │           │     │  └─ memberName: timestamp
+      │  │  │           │     └─ right
+      │  │  │           │        ├─ type: MemberAccess
+      │  │  │           │        ├─ expression
+      │  │  │           │        │  ├─ type: IndexAccess
+      │  │  │           │        │  ├─ base
+      │  │  │           │        │  │  ├─ type: Identifier
+      │  │  │           │        │  │  └─ name: getNameRegistry
+      │  │  │           │        │  └─ index
+      │  │  │           │        │     ├─ type: FunctionCall
+      │  │  │           │        │     ├─ expression
+      │  │  │           │        │     │  ├─ type: MemberAccess
+      │  │  │           │        │     │  ├─ expression
+      │  │  │           │        │     │  │  ├─ type: Identifier
+      │  │  │           │        │     │  │  └─ name: vnsUtils
+      │  │  │           │        │     │  └─ memberName: _getNameHash
+      │  │  │           │        │     ├─ arguments
+      │  │  │           │        │     │  └─ 0
+      │  │  │           │        │     │     ├─ type: Identifier
+      │  │  │           │        │     │     └─ name: _name
+      │  │  │           │        │     ├─ names
+      │  │  │           │        │     └─ identifiers
+      │  │  │           │        └─ memberName: registrationExpiry
+      │  │  │           └─ isArray: false
+      │  │  ├─ visibility: public
+      │  │  ├─ modifiers
+      │  │  ├─ override
+      │  │  ├─ isConstructor: false
+      │  │  ├─ isReceiveEther: false
+      │  │  ├─ isFallback: false
+      │  │  ├─ isVirtual: false
+      │  │  └─ stateMutability: view
+      │  └─ 21
       │     ├─ type: FunctionDefinition
-      │     ├─ name: checkNameAvailability
+      │     ├─ name: getPayableFee
       │     ├─ parameters
       │     │  └─ 0
       │     │     ├─ type: VariableDeclaration
@@ -2468,7 +2548,7 @@
       │     │     ├─ type: VariableDeclaration
       │     │     ├─ typeName
       │     │     │  ├─ type: ElementaryTypeName
-      │     │     │  ├─ name: bool
+      │     │     │  ├─ name: uint256
       │     │     │  └─ stateMutability
       │     │     ├─ name
       │     │     ├─ identifier
@@ -2482,41 +2562,23 @@
       │     │     └─ 0
       │     │        ├─ type: ReturnStatement
       │     │        └─ expression
-      │     │           ├─ type: TupleExpression
-      │     │           ├─ components
-      │     │           │  └─ 0
-      │     │           │     ├─ type: BinaryOperation
-      │     │           │     ├─ operator: >
-      │     │           │     ├─ left
-      │     │           │     │  ├─ type: MemberAccess
-      │     │           │     │  ├─ expression
-      │     │           │     │  │  ├─ type: Identifier
-      │     │           │     │  │  └─ name: block
-      │     │           │     │  └─ memberName: timestamp
-      │     │           │     └─ right
-      │     │           │        ├─ type: MemberAccess
-      │     │           │        ├─ expression
-      │     │           │        │  ├─ type: IndexAccess
-      │     │           │        │  ├─ base
-      │     │           │        │  │  ├─ type: Identifier
-      │     │           │        │  │  └─ name: getNameRegistry
-      │     │           │        │  └─ index
-      │     │           │        │     ├─ type: FunctionCall
-      │     │           │        │     ├─ expression
-      │     │           │        │     │  ├─ type: MemberAccess
-      │     │           │        │     │  ├─ expression
-      │     │           │        │     │  │  ├─ type: Identifier
-      │     │           │        │     │  │  └─ name: vnsUtils
-      │     │           │        │     │  └─ memberName: _getNameHash
-      │     │           │        │     ├─ arguments
-      │     │           │        │     │  └─ 0
-      │     │           │        │     │     ├─ type: Identifier
-      │     │           │        │     │     └─ name: _name
-      │     │           │        │     ├─ names
-      │     │           │        │     └─ identifiers
-      │     │           │        └─ memberName: registrationExpiry
-      │     │           └─ isArray: false
-      │     ├─ visibility: public
+      │     │           ├─ type: FunctionCall
+      │     │           ├─ expression
+      │     │           │  ├─ type: MemberAccess
+      │     │           │  ├─ expression
+      │     │           │  │  ├─ type: Identifier
+      │     │           │  │  └─ name: vnsUtils
+      │     │           │  └─ memberName: _getPrice
+      │     │           ├─ arguments
+      │     │           │  ├─ 0
+      │     │           │  │  ├─ type: Identifier
+      │     │           │  │  └─ name: perCharRegistrationFee
+      │     │           │  └─ 1
+      │     │           │     ├─ type: Identifier
+      │     │           │     └─ name: _name
+      │     │           ├─ names
+      │     │           └─ identifiers
+      │     ├─ visibility: external
       │     ├─ modifiers
       │     ├─ override
       │     ├─ isConstructor: false
@@ -2525,3 +2587,4 @@
       │     ├─ isVirtual: false
       │     └─ stateMutability: view
       └─ kind: contract
+```
